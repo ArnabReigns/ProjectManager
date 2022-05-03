@@ -13,6 +13,9 @@
     <title>Project Manager</title>
   </head>
   <body>
+
+    
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Navbar</a>
@@ -25,9 +28,6 @@
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " aria-current="page" href="/accounts/register">Sign Up</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="#">Link</a>
               </li>
               <li class="nav-item dropdown">
@@ -36,6 +36,7 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="#">Action</a></li>
+                 
                   <li><a class="dropdown-item" href="#">Another action</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -51,43 +52,79 @@
             </form>
           </div>
         </div>
-      </nav>
+    </nav>
     
+    <form action="register" method="post" class="row m-3">
+      {% csrf_token %}
+      <div class="col-md-6">
+        <label for="first-name" class="form-label">First Name</label>
+        <input name="first_name" id="first-name" class="form-control" type="text" required>
+      </div>
+      <div class="col-md-6">
+        <label for="last-name" class="form-label">Last Name</label>
+        <input name="last_name" id="last-name" class="form-control" type="text" required>
+      </div>
+      <div class="col-md-12">
+        <label for="Email" class="form-label">Email</label>
+          <input name="email" id="Email" class="form-control" type="text" required>
+      </div>
+      <div class="col-md-6">
+        <label for="p" class="form-label">Password</label>
+          <input name="password" id="p" class="form-control" type="text" required>
+      </div>
+      <div class="col-md-6">
+        <label for="cp" class="form-label">Confirm Password</label>
+          <input name="cpassword" id="cp" class="form-control" type="text" required>
+      </div>
+      <div class="col-md-4">
+        <label for="country-list" class="form-label">country</label>
+        <select name="country" class="form-select" id="country-list" required>
 
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">description</th>
-            <th scope="col">image</th>
-            <th scope="col">price</th>
-          </tr>
-        </thead>
-        <tbody>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="state-list" class="form-label">states</label>
+        <select disabled name="state" class="form-select" id="state-list" required>
+          
+        </select>
+       </div>
+      <div class="col-md-4">
+        <label for="district-list" class="form-label">city</label>
+        <select disabled name="city" class="form-select" id="district-list" required>
+          
+        </select>
+       </div>
 
-        {% for i in projects %}
-          <tr>
-            <th scope="row"> {{ i.id }} </th>
-            <td>{{ i.name }}</td>
-            <td>{{ i.desc }}</td>
-            <td><img height="200px" src="{{ i.img.url }}" alt=""></td>
-            <td>{{ i.income }}</td>
-          </tr>
-        
-        {% endfor %}
 
-        </tbody>
-      </table>
+       <div class="col-12">
+        <button class="btn btn-primary mt-3" type="submit">Submit form</button>
+      </div>
+    </form>
 
 
 
 
 
 
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{% static 'js/index.js'%}"></script>
     
   </body>
 </html>
